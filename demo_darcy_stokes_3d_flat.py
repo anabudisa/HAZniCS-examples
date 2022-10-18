@@ -311,7 +311,7 @@ def inexact_riesz_map_preconditioner_wRA(AA, W, bcs, mparams, mms):
 
     parameters = {
         "pc_hypre_boomeramg_max_levels": 25,
-        "pc_hypre_boomeramg_max_iter": 1,
+        "pc_hypre_boomeramg_max_iter": 2,
         "pc_hypre_boomeramg_truncfactor" : 0,      # Truncation factor for interpolation
         "pc_hypre_boomeramg_P_max": 0,             # Max elements per row for interpolation
         "pc_hypre_boomeramg_agg_nl": 0,            # Number of levels of aggressive coarsening
@@ -350,7 +350,7 @@ if __name__ == '__main__':
     # For debugging it is useful with direct solver
     parser.add_argument('-direct_solver', type=int, default=0, help='Use direct solver?')
 
-    parser.add_argument('-elm_family', type=str, default='TH', choices=['TH', 'CR'])            
+    parser.add_argument('-elm_family', type=str, default='CR', choices=['TH', 'CR'])            
     # Iterative solver
     parser.add_argument('-preconditioner', type=str, choices=('exact', 'exactRA', 'inexactRA'), default='exact',
                         help='Realization of inverse in the preconditioner')
@@ -387,7 +387,7 @@ if __name__ == '__main__':
         n = 4*2**k
         # Setup system
         AA, bb, W, bcs = get_system(n, family=args.elm_family, mparams=mparams, data=data)
-
+        print([Wi.dim() for Wi in W])
         wh = ii_Function(W)                
         # Solve
         if args.direct_solver:
@@ -406,7 +406,7 @@ if __name__ == '__main__':
                                     mparams=mparams, mms=data)
 
             cbk = lambda k, x, r, b=bb, A=AA: print(f'\titer{k} -> {[(b[i]-xi).norm("l2") for i, xi in enumerate(A*x)]}')            
-            AAinv = MinRes(AA, precond=BB, tolerance=1E-12, show=4, maxiter=400, callback=cbk)
+            AAinv = MinRes(AA, precond=BB, tolerance=1E-10, show=4, maxiter=400, callback=cbk)
             xx = AAinv * bb
 
             dt = time.time() - then
