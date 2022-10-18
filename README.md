@@ -4,7 +4,7 @@ Code for the numerical examples presented in "HAZniCS - Software Components for
 
 ### Requirements
 - Install **HAZniCS** software: Check out this [README](https://github.com/HAZmathTeam/hazmath/blob/0d80e757d4f1495ef4892b2628b86b4000c0ee3a/examples/haznics/README.md) file at HAZmath repo
-- Download required mesh files by executing `bash downloads.sh`
+- Download required mesh files by executing `/bin/sh ./downloads.sh`
 
 ### Run demo examples, e.g. Poisson problem
 ```
