@@ -1,5 +1,5 @@
 """
-\file haznics_ra/demo_poisson_test.py
+\file HAZniCS_examples/demo_elliptic_test.py
 Created by Miroslav Kuchta, Ana Budisa.
 We solve
 
