@@ -1,5 +1,5 @@
 """
-\file HAZniCS_examples/demo_3d1d.py
+\file HAZniCS-examples/demo_3d1d.py
 Created by Miroslav Kuchta, Ana Budisa.
 
 We solve on Omega (3d) and Gamma (1d) a reduced EMI problem of signal propagation in neurons,

@@ -1,5 +1,5 @@
 """
-\file HAZniCS_examples/demo_elliptic.py
+\file HAZniCS-examples/demo_elliptic.py
 Created by Ana Budisa.
 Example copyright by bitbucket.org/fenics-apps/cbc.block.
 
