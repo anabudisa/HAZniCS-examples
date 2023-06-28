@@ -165,7 +165,7 @@ if __name__ == '__main__':
           f'niters={niters}')
     print("************************")
 
-    # export to vtu
+    # Post-process: export to vtu
     xx = xhaz.to_ndarray()
     wh = ii_Function(W)
     wh[0].vector().set_local(xx[:dimV])
